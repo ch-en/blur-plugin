@@ -2,10 +2,12 @@
   <head>
     <title>EEG experiment</title>
     <script src="jsPsych/jspsych.js"></script>
-    <script src="blur-plugin.js"></script>
+    <script src="jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="jsPsych/plugins/jspsych-html-slider-response.js"></script>
+    <script src="jsPsych/plugins/blur-plugin.js"></script>
 
-    //    <style>
-        //    </style>
+    <style>
+    </style>
 
     </head>
     <body></body>
@@ -22,8 +24,8 @@
 
        /* define instructions trial */
        var instructions = {
-         //type: "html-slider-response",
          type: "blur-plugin",
+         // type: "html-slider-response",
          stimulus: "<p>Adjust the slider!</p>",
          post_trial_gap: 2000
        };
