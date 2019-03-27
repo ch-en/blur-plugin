@@ -17,12 +17,15 @@ jsPsych.plugins['html-slider-response'] = (function() {
     name: 'html-slider-response',
     description: '',
     parameters: {
+
+        // the html stimulus.
       stimulus: {
         type: jsPsych.plugins.parameterType.HTML_STRING,
         pretty_name: 'Stimulus',
         default: undefined,
         description: 'The HTML string to be displayed'
       },
+      
       min: {
         type: jsPsych.plugins.parameterType.INT,
         pretty_name: 'Min slider',
@@ -92,6 +95,9 @@ jsPsych.plugins['html-slider-response'] = (function() {
 
     var html = '<div id="jspsych-html-slider-response-wrapper" style="margin: 100px 0px;">';
     html += '<div id="jspsych-html-slider-response-stimulus">' + trial.stimulus + '</div>';
+        // trial.stimulus is the html we will pass in.
+        // in image slider, it looks like this:
+        // html += '<div id="jspsych-image-slider-response-stimulus"><img src="' + trial.stimulus + '"></div>';
     html += '<div class="jspsych-html-slider-response-container" style="position:relative;">';
     html += '<input type="range" value="'+trial.start+'" min="'+trial.min+'" max="'+trial.max+'" step="'+trial.step+'" style="width: 100%;" id="jspsych-html-slider-response-response"></input>';
     html += '<div>'
