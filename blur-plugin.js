@@ -25,7 +25,7 @@ jsPsych.plugins['html-slider-response'] = (function() {
         default: undefined,
         description: 'The HTML string to be displayed'
       },
-      
+
       min: {
         type: jsPsych.plugins.parameterType.INT,
         pretty_name: 'Min slider',
@@ -94,10 +94,15 @@ jsPsych.plugins['html-slider-response'] = (function() {
   plugin.trial = function(display_element, trial) {
 
     var html = '<div id="jspsych-html-slider-response-wrapper" style="margin: 100px 0px;">';
+
+    // document html ... inner html = new stimulus_duration
+    // document.querySelector(jspsych-html-slider-response-response)
     html += '<div id="jspsych-html-slider-response-stimulus">' + trial.stimulus + '</div>';
         // trial.stimulus is the html we will pass in.
         // in image slider, it looks like this:
         // html += '<div id="jspsych-image-slider-response-stimulus"><img src="' + trial.stimulus + '"></div>';
+
+
     html += '<div class="jspsych-html-slider-response-container" style="position:relative;">';
     html += '<input type="range" value="'+trial.start+'" min="'+trial.min+'" max="'+trial.max+'" step="'+trial.step+'" style="width: 100%;" id="jspsych-html-slider-response-response"></input>';
     html += '<div>'
@@ -119,6 +124,9 @@ jsPsych.plugins['html-slider-response'] = (function() {
     // add submit button
     html += '<button id="jspsych-html-slider-response-next" class="jspsych-btn">'+trial.button_label+'</button>';
 
+
+
+
     display_element.innerHTML = html;
 
     var response = {
@@ -139,6 +147,13 @@ jsPsych.plugins['html-slider-response'] = (function() {
       }
 
     });
+
+    display_element.querySelector('#jspsych-html-slider-response-response').addEventListener('input', function(e){
+        console.log(e); 
+
+    })
+
+
 
     function end_trial(){
 
