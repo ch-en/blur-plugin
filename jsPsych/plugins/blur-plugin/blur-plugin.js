@@ -1,5 +1,5 @@
 /**
- * jspsych-html-slider-response
+ * jspsych-blur-plugin
  * a jspsych plugin for free response survey questions
  *
  * Josh de Leeuw
@@ -154,6 +154,18 @@ jsPsych.plugins['html-slider-response'] = (function() {
     })
 
 
+    function generate_stimCssStyling(blurLevel){ // var blurLevel = .5;
+        // html
+        blurStyleString += "<div id='jspsych-html-slider-response-stimulus'" +
+            "style='filter: blur(" + blurLevel + "px); -webkit-filter: ("
+            + blurLevel "px)'>" 
+        return blurStyleString;
+  }
+
+  function draw() {
+    var str = generate_stim(dim_a, dim_b);
+    document.querySelector('#stim_target').innerHTML = str;
+  }
 
     function end_trial(){
 
