@@ -97,7 +97,7 @@ jsPsych.plugins['html-slider-response'] = (function() {
 
     // document html ... inner html = new stimulus_duration
     // document.querySelector(jspsych-html-slider-response-response)
-    html += '<div id="jspsych-html-slider-response-stimulus">' + trial.stimulus + '</div>';
+    html += generate_stimCssStylingn + trial.stimulus + '</div>';
         // trial.stimulus is the html we will pass in.
         // in image slider, it looks like this:
         // html += '<div id="jspsych-image-slider-response-stimulus"><img src="' + trial.stimulus + '"></div>';
@@ -138,6 +138,7 @@ jsPsych.plugins['html-slider-response'] = (function() {
       // measure response time
       var endTime = performance.now();
       response.rt = endTime - startTime;
+
       response.response = display_element.querySelector('#jspsych-html-slider-response-response').value;
 
       if(trial.response_ends_trial){
@@ -150,17 +151,23 @@ jsPsych.plugins['html-slider-response'] = (function() {
 
     display_element.querySelector('#jspsych-html-slider-response-response').addEventListener('input', function(e){
         console.log(e);
-
+        var blurLevel = e; 
+        document.querySelector('#jspsych-image-blur-slider-stimulus').style.filter
+                = "blur("+blurLevel+"px)";
     })
 
 
-    function generate_stimCssStyling(blurLevel){ // var blurLevel = .5;
+    function changeBlurLevel(blurLevel){ // var blurLevel = .5;
         // html
-        blurStyleString += "<div id='jspsych-html-slider-response-stimulus'" +
+        /* blurStyleString += "<div id='jspsych-html-slider-response-stimulus'" +
             "style='filter: blur(" + blurLevel + "px); -webkit-filter: ("
-            + blurLevel "px)'>" 
+            + blurLevel "px)'>"
         return blurStyleString;
+        */
+
   }
+
+
 
   function draw() {
     var str = generate_stim(dim_a, dim_b);
