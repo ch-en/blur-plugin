@@ -1,0 +1,4 @@
+- do the blurring on load -- right now it starts at 0, but you need to
+have it blurred when the page loads
+
+- randomize the levels yourself

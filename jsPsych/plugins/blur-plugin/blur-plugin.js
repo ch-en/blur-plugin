@@ -151,7 +151,8 @@ jsPsych.plugins['html-slider-response'] = (function() {
 
     display_element.querySelector('#jspsych-html-slider-response-response').addEventListener('input', function(e){
         console.log(e);
-        var blurLevel = e; 
+        //
+        var blurLevel = e;
         document.querySelector('#jspsych-image-blur-slider-stimulus').style.filter
                 = "blur("+blurLevel+"px)";
     })
